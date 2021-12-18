@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+	<!-- 
+	
+		Spring boot 초기 설정 
+		
+		1) livereload 설정
+		
+		- Chrome 웹스토어 livereload 확장 플러그인 설치 
+		- application.properties - livereload 설정
+		
+		2) lombok 설정
+		 - 설정 메뉴얼 참고 
+	 -->
+
+	<h2>타임리프 실습</h2>
+	
+	<h4>타임리프 조건문</h4>
+	<h3>[[${title}]]</h3>
+	<h3 th:text="${hello}">제목</h3>
+	<p>
+		<a href="#" th:if="${userVo}">[[${userVo.name}]]님 반갑습니다.</a> <!-- userVo가 null이 아니면 을 생략해서 userVo -->
+		<a href="#" th:unless="${userVo}">user 정보가 없습니다.</a>
+	</p>
+	<p th:switch="${userVo.name == '홍길동'}">
+		<span th:case="true">홍길동님 맞습니다..</span>
+		<span th:case="false">홍길동님이 아닙니다.</span>
+	</p>
+	<p th:switch="${userVo.age > 20}">
+		<span th:case="true">성인입니다.</span>
+		<span th:case="false">미성년자입니다.</span>
+	</p>
+	
+	<h4>타임리프 반복문</h4>
+	<table border="1">
+		<tr>
+			<td>아이디</td>	
+			<td>이름</td>
+			<td>휴대폰</td>
+			<td>나이</td>
+		</tr>
+		<tr th:each="user:${users}">
+			<td th:text="${user.uid}">아이디</td>
+			<td th:text="${user.name}">이름</td>
+			<td th:text="${user.hp}">휴대폰</td>
+			<td th:text="${user.age}">나이</td>
+		</tr>
+	</table>
+	<h4>타임리프 링크</h4>
+	<a th:href="@{/include}"> 타임리프 인클루드 실습이동</a> <!--  컨텍스트 루트에 상관없이 html문서명만 사용하면 바로 이동한다. -->
+</body>
+</html>
