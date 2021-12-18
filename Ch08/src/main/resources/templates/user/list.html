@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+</head>
+<body>
+	<h1>User 목록</h1>
+	<table border="1">
+		<tr>
+			<td>아이디</td>
+			<th>이름</th>
+			<th>휴대폰</th>
+			<th>나이</th>
+			<th>관리</th>
+		</tr>
+		<tr th:each="user:${users}">
+			<td th:text="${user.uid}">아이디</td> 
+			<th th:text="${user.name}">이름</th>
+			<th th:text="${user.hp}">휴대폰</th>
+			<th th:text="${user.age}">나이</th> <!-- 메서드 사용하지않고 직접참조가능  -->
+			<td>
+				<a th:href="@{/user/modify(uid=${user.uid})}"> 수정 </a> 
+				<a th:href="@{/user/delete(uid=${user.uid})}"> 삭제 </a>
+			</td> <!-- get방식으로 주소에다가 데이터를 실어보낸다~~~확인은 검사로~~~~ -->
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cutomer List</title>
+</head>
+<body>
+	<h3> 고객목록 </h3>
+	
+	<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td>이름</td>
+				<td>주소</td>
+				<td>휴대폰</td>
+				<td>정보수정</td>
+			</tr>
+			<tr th:each="customer:${customers}">
+					<td th:text="${customer.uid}">아이디</td>
+					<td th:text="${customer.name}">이름</td>
+					<td th:text="${customer.addr}">주소</td>
+					<td th:text="${customer.hp}">휴대폰</td>
+					<td>
+						<a th:href="@{/customer/modify(uid=${customer.uid})}"> 수정 </a> <!-- 주소에 정보를 담아서 보냄 -->
+						<a th:href="@{/customer/delete(uid=${customer.uid})}"> 삭제 </a> <!--  get방식으로 보냄  -->
+					</td>
+			</tr>
+	</table>	
+</body>
+</html>

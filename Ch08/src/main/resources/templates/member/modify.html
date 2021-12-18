@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>modify</title>
+</head>
+<body>
+	<h3>직원수정</h3>
+	<form th:action="@{/member/modify}" method="post">
+		<table border="1">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="uid" th:value="${memberVo.uid}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name" th:value="${memberVo.name}"/></td>
+			</tr>
+			<tr>
+				<td>휴대폰</td>
+				<td><input type="text" name="hp" th:value="${memberVo.hp}"/></td>
+			</tr>
+			<tr>
+				<td>직급</td>
+				<td>
+					<select name="pos">
+						<option th:selected="${memberVo.pos}=='사원'" th:value="사원">사원</option>
+						<option th:selected="${memberVo.pos}=='대리'" th:value="대리">대리</option>
+						<option th:selected="${memberVo.pos}=='과장'" th:value="과장">과장</option>
+						<option th:selected="${memberVo.pos}=='차장'" th:value="차장">차장</option>
+						<option th:selected="${memberVo.pos}=='부장'" th:value="부장">부장</option>					
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>부서</td>
+				<td>
+					<select name="dep">
+						<option th:selected="${memberVo.dep}=='101'" th:value=101>영업1부</option>
+						<option th:selected="${memberVo.dep}=='102'" th:value=102>영업2부</option>
+						<option th:selected="${memberVo.dep}=='103'" th:value=103>영업3부</option>
+						<option th:selected="${memberVo.dep}=='104'" th:value=104>영업지원부</option>
+						<option th:selected="${memberVo.dep}=='105'" th:value=105>인사부</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정하기"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
